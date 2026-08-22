@@ -119,7 +119,7 @@ del tiempo de ejecución.
 ---
 
 
-# 🔍 Análisis
+# Análisis
 
 La mejora de rendimiento se debe principalmente a la capacidad de AVX2 de procesar múltiples valores de punto flotante en paralelo.
 
