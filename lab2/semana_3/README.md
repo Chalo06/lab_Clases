@@ -10,25 +10,25 @@ Implementación y evaluación del uso de **instrucciones SIMD mediante AVX2** pa
 
 Se implementó la multiplicación elemento a elemento de dos vectores:
 
-[
+$$
 c_i = a_i b_i
-]
+$$
 
 Utilizando registros AVX2 de 256 bits.
 
 Un registro `__m256` permite procesar simultáneamente:
 
-[
+$$
 \frac{256\ bits}{32\ bits}=8\ floats
-]
+$$
 
 ### Ejercicio B — Reducción vectorial
 
 Se implementó la reducción de los 8 valores almacenados en un registro `__m256`:
 
-[
+$$
 c = \sum_{i=0}^{7} a_i
-]
+$$
 
 ### Ejercicio C — Multiplicación de matrices
 
@@ -99,20 +99,20 @@ de la implementación escalar.
 
 Esto representa aproximadamente:
 
-[
+$$
 Speedup =
 \frac{9.382713}{2.679921}
 \approx \mathbf{3.50\times}
-]
+$$
 
 La versión AVX2 fue aproximadamente **3.5 veces más rápida** que la versión escalar.
 
 En términos de tiempo de ejecución, esto representa una reducción aproximada del:
 
-[
+$$
 \frac{9.382713-2.679921}{9.382713}\times100
 \approx \mathbf{71.44%}
-]
+$$
 
 del tiempo de ejecución.
 
@@ -125,9 +125,9 @@ La mejora de rendimiento se debe principalmente a la capacidad de AVX2 de proces
 
 Un registro AVX2 tiene 256 bits y puede contener ocho valores `float` de 32 bits:
 
-[
+$$
 256 / 32 = 8
-]
+$$
 
 Por lo tanto, una instrucción como:
 
