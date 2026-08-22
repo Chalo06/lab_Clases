@@ -1,1 +1,143 @@
+# Laboratorio SIMD — Vectorización con AVX2
+
+Implementación y evaluación del uso de **instrucciones SIMD mediante AVX2** para acelerar operaciones de multiplicación de vectores y multiplicación de matrices.
+
+---
+
+## Ejercicios realizados
+
+### Ejercicio A — Multiplicación vectorial
+
+Se implementó la multiplicación elemento a elemento de dos vectores:
+
+[
+c_i = a_i b_i
+]
+
+Utilizando registros AVX2 de 256 bits.
+
+Un registro `__m256` permite procesar simultáneamente:
+
+[
+\frac{256\ bits}{32\ bits}=8\ floats
+]
+
+### Ejercicio B — Reducción vectorial
+
+Se implementó la reducción de los 8 valores almacenados en un registro `__m256`:
+
+[
+c = \sum_{i=0}^{7} a_i
+]
+
+### Ejercicio C — Multiplicación de matrices
+
+Las operaciones anteriores se utilizaron para implementar el producto punto necesario para la multiplicación de matrices
+
+### Ejercicio D — Comparación de rendimiento
+
+Finalmente se comparó la implementación vectorizada mediante AVX2 contra una implementación escalar.
+
+---
+
+# Implementación
+
+Todos los cambios fueron hechos siguiendo las recomendaciones y la guía del profesor durante la clase, dichos cambios pueden verse en semana_3/matmul_avx2.c y se utilizó Intel® Intrinsics Guide: https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=4687,4687&text=_mm256_mul
+
+# Configuración utilizada
+
+| Parámetro                     |       Valor |
+| ----------------------------- | ----------: |
+| Tamaño de matriz              | 2048 × 2048 |
+| Tipo de dato                  |     `float` |
+| Elementos procesados por AVX2 |           8 |
+| Repeticiones                  |           1 |
+| Compilador                    |         GCC |
+| Optimización                  |       `-O3` |
+| Implementación SIMD           |        AVX2 |
+| Compilación AVX2              |    `-mavx2` |
+
+---
+
+# Resultados
+A continuación se muestran las capturas de la ejecución de ambas versiones desde la terminal.
+
+Versión AVX2
+
+![Resultados de la versión AVX2](IMG/resultado-avx2.png)
+
+Captura correspondiente a la compilación y ejecución de la versión vectorizada utilizando AVX2.
+
+
+
+
+Versión escalar
+
+![Resultados de la versión escalar](IMG/resultado-scalar.png)
+
+Captura correspondiente a la compilación y ejecución de la versión escalar utilizada como referencia.
+
+
+## Comparación de rendimiento
+
+| Implementación |   Tiempo (s) |      GFLOP/s |   Speedup |
+| -------------- | -----------: | -----------: | --------: |
+| Escalar        |     9.382713 |     1.831013 |     1.00× |
+| AVX2           | **2.679921** | **6.410589** | **3.50×** |
+
+### Resultado
+
+La implementación utilizando AVX2 obtuvo un tiempo de ejecución de:
+
+**2.679921 segundos**
+
+frente a:
+
+**9.382713 segundos**
+
+de la implementación escalar.
+
+Esto representa aproximadamente:
+
+[
+Speedup =
+\frac{9.382713}{2.679921}
+\approx \mathbf{3.50\times}
+]
+
+La versión AVX2 fue aproximadamente **3.5 veces más rápida** que la versión escalar.
+
+En términos de tiempo de ejecución, esto representa una reducción aproximada del:
+
+[
+\frac{9.382713-2.679921}{9.382713}\times100
+\approx \mathbf{71.44%}
+]
+
+del tiempo de ejecución.
+
+---
+
+
+# 🔍 Análisis
+
+La mejora de rendimiento se debe principalmente a la capacidad de AVX2 de procesar múltiples valores de punto flotante en paralelo.
+
+Un registro AVX2 tiene 256 bits y puede contener ocho valores `float` de 32 bits:
+
+[
+256 / 32 = 8
+]
+
+Por lo tanto, una instrucción como:
+
+```c
+_mm256_mul_ps(a, b);
+```
+
+puede realizar ocho multiplicaciones simultáneamente.
+
+En la multiplicación de matrices, esto permite acelerar los productos punto utilizados para calcular cada elemento de la matriz resultado.
+
+---
 
