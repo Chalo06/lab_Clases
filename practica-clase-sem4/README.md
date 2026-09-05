@@ -35,7 +35,7 @@ Los resultados obtenidos fueron:
 
 Una de las ejecuciones puede observarse a continuación:
 
-![Ejecución cpu-affinity](practica-clase-sem4/result/time.png)
+![Ejecución cpu-affinity](result/time.png)
 
 Las demás capturas utilizadas para realizar la comparación se encuentran en:
 
@@ -73,7 +73,7 @@ Se realizaron pruebas desde **1 hasta 8 hilos** y posteriormente se generaron gr
 | 7 | 0.4014 | 4.35x | 62.1% |
 | 8 | 0.6307 | 2.77x | 34.6% |
 
-![Matmul tiled OpenMP](practica-clase-sem4/semana%203/scaling/matmul_threads.png)
+![Matmul tiled OpenMP](semana%203/scaling/matmul_threads.png)
 
 El mejor tiempo se obtuvo utilizando **7 hilos**, con aproximadamente **0.401 s**, frente a los **1.745 s** obtenidos utilizando solamente un hilo.
 
@@ -102,7 +102,7 @@ por lo que el programa fue aproximadamente **4.35 veces más rápido** que la ej
 | 7 | 1.1111 | 1.55x | 22.2% |
 | 8 | 1.8713 | 0.92x | 11.5% |
 
-![Softmax OpenMP](practica-clase-sem4/semana%203/scaling/softmax_threads.png)
+![Softmax OpenMP](semana%203/scaling/softmax_threads.png)
 
 El menor tiempo medido se obtuvo con **6 hilos**, con aproximadamente **1.090 s**, mientras que utilizando un hilo se obtuvo un tiempo de **1.723 s**.
 
@@ -139,7 +139,7 @@ Por lo tanto, el tiempo total de ejecución medido fue aproximadamente:
 3.006 segundos
 ```
 
-![Biblioteca estática](practica-clase-sem4/result/libraries.png)
+![Biblioteca estática](result/libraries.png)
 
 ---
 
@@ -166,7 +166,7 @@ El tiempo total medido fue aproximadamente:
 6.408 segundos
 ```
 
-![Biblioteca dinámica](practica-clase-sem4/result/librariesB.png)
+![Biblioteca dinámica](result/librariesB.png)
 
 ---
 
